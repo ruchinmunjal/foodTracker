@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Auth from '@okta/okta-vue'
 import Hello from '@/components/Hello'
-
+import FoodRecords from '@/components/FoodRecords'
 
 Vue.use(Auth,{
   issuer:'https://teenbhaiinc.okta.com/oauth2/default',
@@ -22,7 +22,15 @@ let router= new Router({
     },{
       path:'/implicit/callback',
       component:Auth.handleCallback()
-    }
+    },
+    {
+      path: '/food-records',
+      name: 'FoodRecords',
+      component: FoodRecords,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
