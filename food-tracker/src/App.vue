@@ -27,11 +27,23 @@
         user: null
       }
     },
+    async created(){
+      await this.refreshUser();
+    },
     methods: {
       login () {
-
+        this.$auth.loginRedirect()
+      },
+      async onRouteChange(){
+        await this.refreshUser()
+      },
+      async refreshUser(){
+        this.user = await this.$auth.getUser()
       },
       async logout () {
+        await this.$auth.logout()
+        await this.refreshUser()
+        this.$router.push('/')
 
       }
     }
