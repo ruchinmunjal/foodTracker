@@ -1,17 +1,19 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Auth from '@okta/okta-vue'
-import Hello from '@/components/Hello'
-import FoodRecords from '@/components/FoodRecords'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Auth from '@okta/okta-vue';
+import Hello from '@/components/Hello';
+import FoodRecords from '@/components/FoodRecords';
 
+Vue.use(Router);
 Vue.use(Auth,{
-  issuer:'https://teenbhaiinc.okta.com/oauth2/default',
-  client_id:'0oajdom8aXOXThUhm4x6',
-  redirect_uri:'http://localhost:8080/implicit/callback',
-  scope:'openid proile email'
-})
+  issuer:'https://dev-400262.okta.com/oauth2/default',
+  clientId:'0oajdom8aXOXThUhm4x6',
+  redirectUri:'http://localhost:8080/implicit/callback',
+  scopes: ['openid', 'profile', 'email'],
+  pkce: true
+});
 
-Vue.use(Router)
+
 let router= new Router({
   mode:'history',
   routes: [
@@ -32,8 +34,8 @@ let router= new Router({
       }
     },
   ]
-})
+});
 
-router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
 
-export default router
+export default router;

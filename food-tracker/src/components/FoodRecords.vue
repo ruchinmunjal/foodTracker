@@ -35,7 +35,7 @@
               <b-form-input type="text" v-model="model.name"></b-form-input>
             </b-form-group>
             <b-form-group label="Value">
-              <b-form-input type="number" rows="4" v-model="model.value"></b-form-input>
+              <b-form-input type="number" rows="4" v-model.number="model.value"></b-form-input>
             </b-form-group>
             <b-form-group label="Date Time">
               <b-form-input type="datetime-local" rows="4" v-model="model.dateTime"></b-form-input>
